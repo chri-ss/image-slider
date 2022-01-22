@@ -12,14 +12,19 @@
     height: 50%;
     width: 60%;
     border: 1px solid black;
+    overflow: hidden;
 }
 
 .slider {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     height: 95%;
-    width: 100%;
+    width: 300%;
     font-size: 150px;
+}
+
+.left, .right {
+    height: 10rem;
+    width: 5rem;
 }

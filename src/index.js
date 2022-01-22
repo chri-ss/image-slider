@@ -1,5 +1,6 @@
 import './style.css';
 import './reset.css';
-import makeSlider from './makeSlider';
+import { makeSlider, addArrowEvents } from './makeSlider';
 
 makeSlider();
+addArrowEvents();

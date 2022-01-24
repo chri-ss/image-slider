@@ -1,6 +1,7 @@
 import './style.css';
 import './reset.css';
-import { makeSlider, addArrowEvents } from './makeSlider';
+import { makeSlider, slideLeft, slideRight } from './makeSlider';
 
 makeSlider();
-addArrowEvents();
+slideLeft();
+slideRight();

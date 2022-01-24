@@ -9,22 +9,25 @@
 .frame {
     display: flex;
     align-items: center;
-    height: 50%;
-    width: 60%;
+    justify-content: center;
+    height: 80%;
+    width: 50%;
     border: 1px solid black;
     overflow: hidden;
-}
-
-.slider {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 95%;
-    width: 300%;
-    font-size: 150px;
 }
 
 .left, .right {
     height: 10rem;
     width: 5rem;
+}
+
+.slide {
+    object-fit: scale-down;
+    height: 100%;
+    width: 100%;
+    transition: width 1s ease-in;
+}
+
+.image {
+    width: 0;
 }

@@ -29,31 +29,41 @@ let selected = 0;
 
 const makeSlide = () => {
   images.forEach((image) => {
-    const container = document.createElement("div");
-    container.classList.add("container");
-    container.setAttribute("data-image", `${images.indexOf(image)}`);
+    const container = document.querySelector(
+      `[data-image="${images.indexOf(image)}"]`
+    );
     const newImage = new Image();
     newImage.classList.add("image");
     newImage.src = image;
-    if (container.getAttribute("data-image") == selected) {
-      container.classList.add('visible');
-    }
     container.appendChild(newImage);
+    if (container.getAttribute("data-image") == selected) {
+      container.classList.toggle("visible");
+    }
+  });
+};
+
+const addContainers = () => {
+  images.forEach((image) => {
+    const container = document.createElement("div");
+    container.classList.add("container");
+    container.setAttribute("data-image", `${images.indexOf(image)}`);
     slide.appendChild(container);
-    frame.appendChild(slide);
   });
 };
 
 const makeFrame = () => {
+  frame.appendChild(slide);
   content.appendChild(left);
   content.appendChild(frame);
   content.appendChild(right);
 };
 
-const clearFrame = () => {
-  while (slide.firstChild) {
-    slide.removeChild(slide.lastChild);
-  }
+const clearContainers = () => {
+  const containers = Array.from(document.querySelectorAll(".container"));
+  containers.forEach((container) => {
+    container.removeChild(container.lastChild);
+    container.classList.remove('visible');
+  });
 };
 
 const slideRight = () => {
@@ -63,7 +73,7 @@ const slideRight = () => {
       if (selected > 4) {
         selected = 0;
       }
-      clearFrame();
+      clearContainers();
       makeSlide();
     }
   });
@@ -76,10 +86,10 @@ const slideLeft = () => {
       if (selected < 0) {
         selected = 4;
       }
-      clearFrame();
+      clearContainers();
       makeSlide();
     }
   });
 };
 
-export { makeSlide, slideRight, slideLeft, makeFrame };
+export { makeSlide, slideRight, slideLeft, makeFrame, addContainers };

@@ -27,42 +27,44 @@ const images = [beach1, beach2, beach3, beach4, beach5];
 
 let selected = 0;
 
-const makeSlider = () => {
+const makeSlide = () => {
   images.forEach((image) => {
+    const container = document.createElement("div");
+    container.classList.add("container");
+    container.setAttribute("data-image", `${images.indexOf(image)}`);
     const newImage = new Image();
-    newImage.src = image;
     newImage.classList.add("image");
-    newImage.setAttribute("data-image", `${images.indexOf(image)}`);
-    if (newImage.getAttribute("data-image") == selected) {
-      newImage.style.width = "100%";
-      newImage.style.height = "100%";
+    newImage.src = image;
+    if (container.getAttribute("data-image") == selected) {
+      container.classList.add('visible');
     }
-    slide.appendChild(newImage);
+    container.appendChild(newImage);
+    slide.appendChild(container);
+    frame.appendChild(slide);
   });
-  frame.appendChild(slide);
-  content.appendChild(frame);
+};
+
+const makeFrame = () => {
   content.appendChild(left);
   content.appendChild(frame);
   content.appendChild(right);
 };
 
-const updateSlider = (index) => {
-  const divImages = Array.from(document.querySelectorAll(".image"));
-  divImages.forEach((image) => {
-    slide.removeChild(image);
-  });
-  selected = index;
-  makeSlider();
+const clearFrame = () => {
+  while (slide.firstChild) {
+    slide.removeChild(slide.lastChild);
+  }
 };
 
 const slideRight = () => {
   content.addEventListener("click", (e) => {
     if (e.target.classList[0] === "right") {
       selected += 1;
-      if(selected > 4) {
+      if (selected > 4) {
         selected = 0;
       }
-      updateSlider(selected);
+      clearFrame();
+      makeSlide();
     }
   });
 };
@@ -71,12 +73,13 @@ const slideLeft = () => {
   content.addEventListener("click", (e) => {
     if (e.target.classList[0] === "left") {
       selected -= 1;
-      if(selected < 0) {
+      if (selected < 0) {
         selected = 4;
       }
-      updateSlider(selected);
+      clearFrame();
+      makeSlide();
     }
   });
 };
 
-export { makeSlider, slideRight, slideLeft, beach1 };
+export { makeSlide, slideRight, slideLeft, makeFrame };

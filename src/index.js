@@ -1,7 +1,8 @@
 import './style.css';
 import './reset.css';
-import { makeSlider, slideLeft, slideRight } from './makeSlider';
+import { makeFrame, makeSlide, slideLeft, slideRight } from './makeSlider';
 
-makeSlider();
+makeFrame();
+makeSlide();
 slideLeft();
 slideRight();

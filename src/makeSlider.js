@@ -17,6 +17,9 @@ const right = new Image();
 right.src = rightArrow;
 right.classList.add("right");
 
+const mainContainer = document.createElement('div');
+mainContainer.classList.add('main-container');
+
 const frame = document.createElement("div");
 frame.classList.add("frame");
 
@@ -51,11 +54,27 @@ const addContainers = () => {
   });
 };
 
+const addNavDots = () => {
+  const dotsContainer = document.createElement('div');
+  dotsContainer.classList.add('dots-container');
+  images.forEach(image => {
+    const newDot = document.createElement('a');
+    newDot.classList.add('new-dot');
+    newDot.setAttribute('data-dot', images.indexOf(image));
+    dotsContainer.appendChild(newDot);
+    mainContainer.appendChild(dotsContainer);
+  })
+}
+
 const makeFrame = () => {
+  const frameContainer = document.createElement('div');
+  frameContainer.classList.add('frame-container');
   frame.appendChild(slide);
-  content.appendChild(left);
-  content.appendChild(frame);
-  content.appendChild(right);
+  frameContainer.appendChild(left);
+  frameContainer.appendChild(frame);
+  frameContainer.appendChild(right);
+  mainContainer.appendChild(frameContainer);
+  content.appendChild(mainContainer);
 };
 
 const clearContainers = () => {
@@ -92,4 +111,4 @@ const slideLeft = () => {
   });
 };
 
-export { makeSlide, slideRight, slideLeft, makeFrame, addContainers };
+export { makeSlide, slideRight, slideLeft, makeFrame, addContainers, addNavDots };

@@ -1,6 +1,8 @@
 import './style.css';
 import './reset.css';
-import { makeFrame, makeSlide, slideLeft, slideRight, addContainers, addNavDots, colorDots, dotClick } from './makeSlider';
+import { makeFrame, makeSlide, addContainers } from './makeSlider';
+import { slideLeft, slideRight, dotClick} from './events';
+import { addNavDots, colorDots } from './navDots';
 
 addContainers();
 makeFrame();

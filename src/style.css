@@ -45,7 +45,7 @@
     height: 0px;
     width: 0px;
     opacity: 0;
-    transition: opacity 2s;
+    transition: opacity 1s;
 }
 
 .image {
@@ -75,10 +75,10 @@
     width: 1rem;
     border-radius: 50%;
     background-color: rgb(168, 173, 168);
-    border: 2px solid rgb(55, 73, 55);
+    border: 2px solid rgb(22, 27, 22);
     transition: background-color 1s; 
 }
 
 .dot-selected {
-    background-color: rgb(55, 73, 55);
+    background-color: rgb(85, 126, 85);
 }

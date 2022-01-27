@@ -103,7 +103,7 @@ const dotClick = () => {
   const dotsContainer = document.querySelector(".dots-container");
   dotsContainer.addEventListener("click", (e) => {
     if (e.target.classList[0] === "new-dot") {
-      selected = e.target.getAttribute("data-dot");
+      selected = parseInt(e.target.getAttribute("data-dot"));
       clearContainers();
       makeSlide();
       colorDots();
@@ -118,6 +118,7 @@ const slideRight = () => {
       if (selected > 4) {
         selected = 0;
       }
+      console.log(selected)
       clearContainers();
       makeSlide();
       colorDots();

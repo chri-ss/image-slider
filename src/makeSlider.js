@@ -17,8 +17,8 @@ const right = new Image();
 right.src = rightArrow;
 right.classList.add("right");
 
-const mainContainer = document.createElement('div');
-mainContainer.classList.add('main-container');
+const mainContainer = document.createElement("div");
+mainContainer.classList.add("main-container");
 
 const frame = document.createElement("div");
 frame.classList.add("frame");
@@ -55,20 +55,20 @@ const addContainers = () => {
 };
 
 const addNavDots = () => {
-  const dotsContainer = document.createElement('div');
-  dotsContainer.classList.add('dots-container');
-  images.forEach(image => {
-    const newDot = document.createElement('a');
-    newDot.classList.add('new-dot');
-    newDot.setAttribute('data-dot', images.indexOf(image));
+  const dotsContainer = document.createElement("div");
+  dotsContainer.classList.add("dots-container");
+  images.forEach((image) => {
+    const newDot = document.createElement("a");
+    newDot.classList.add("new-dot");
+    newDot.setAttribute("data-dot", images.indexOf(image));
     dotsContainer.appendChild(newDot);
     mainContainer.appendChild(dotsContainer);
-  })
-}
+  });
+};
 
 const makeFrame = () => {
-  const frameContainer = document.createElement('div');
-  frameContainer.classList.add('frame-container');
+  const frameContainer = document.createElement("div");
+  frameContainer.classList.add("frame-container");
   frame.appendChild(slide);
   frameContainer.appendChild(left);
   frameContainer.appendChild(frame);
@@ -81,7 +81,33 @@ const clearContainers = () => {
   const containers = Array.from(document.querySelectorAll(".container"));
   containers.forEach((container) => {
     container.removeChild(container.lastChild);
-    container.classList.remove('visible');
+    container.classList.remove("visible");
+  });
+};
+
+const colorDots = () => {
+  const dots = Array.from(document.querySelectorAll(".new-dot"));
+  const selectedImage = document.querySelector(".visible");
+  dots.forEach((dot) => {
+    if (
+      dot.getAttribute("data-dot") === selectedImage.getAttribute("data-image")
+    ) {
+      dot.classList.add("dot-selected");
+    } else {
+      dot.classList.remove("dot-selected");
+    }
+  });
+};
+
+const dotClick = () => {
+  const dotsContainer = document.querySelector(".dots-container");
+  dotsContainer.addEventListener("click", (e) => {
+    if (e.target.classList[0] === "new-dot") {
+      selected = e.target.getAttribute("data-dot");
+      clearContainers();
+      makeSlide();
+      colorDots();
+    }
   });
 };
 
@@ -94,6 +120,7 @@ const slideRight = () => {
       }
       clearContainers();
       makeSlide();
+      colorDots();
     }
   });
 };
@@ -107,8 +134,18 @@ const slideLeft = () => {
       }
       clearContainers();
       makeSlide();
+      colorDots();
     }
   });
 };
 
-export { makeSlide, slideRight, slideLeft, makeFrame, addContainers, addNavDots };
+export {
+  makeSlide,
+  slideRight,
+  slideLeft,
+  makeFrame,
+  addContainers,
+  addNavDots,
+  colorDots,
+  dotClick
+};

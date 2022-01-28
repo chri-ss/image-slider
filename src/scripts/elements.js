@@ -1,10 +1,10 @@
-import leftArrow from "./images/arrow_left_black_24dp.svg";
-import rightArrow from "./images/arrow_right_black_24dp.svg";
-import beach1 from "./images/pexels-photo-62389.jpeg";
-import beach2 from "./images/pexels-photo-1174732.jpeg";
-import beach3 from "./images/pexels-photo-1710795.jpeg";
-import beach4 from "./images/pexels-photo-3233371.jpeg";
-import beach5 from "./images/pexels-photo-3601425.jpeg";
+import leftArrow from "../images/arrow_left_black_24dp.svg";
+import rightArrow from "../images/arrow_right_black_24dp.svg";
+import beach1 from "../images/pexels-photo-62389.jpeg";
+import beach2 from "../images/pexels-photo-1174732.jpeg";
+import beach3 from "../images/pexels-photo-1710795.jpeg";
+import beach4 from "../images/pexels-photo-3233371.jpeg";
+import beach5 from "../images/pexels-photo-3601425.jpeg";
 
 const content = document.querySelector("#content");
 

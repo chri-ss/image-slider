@@ -34,6 +34,7 @@
 .left, .right {
     height: 10rem;
     width: 5rem;
+    cursor: pointer;
 }
 
 .slide {
@@ -77,8 +78,10 @@
     background-color: rgb(168, 173, 168);
     border: 2px solid rgb(22, 27, 22);
     transition: background-color 1s; 
+    cursor: pointer;
 }
 
 .dot-selected {
     background-color: rgb(85, 126, 85);
+    box-shadow: 0 0 5px 1px;
 }
